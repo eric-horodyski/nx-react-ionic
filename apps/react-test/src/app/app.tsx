@@ -6,6 +6,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonTitle,
   setupIonicReact,
 } from '@ionic/react';
 
@@ -31,7 +32,11 @@ setupIonicReact({
 
 export function App() {
   return (
-    <div>
+    <div style={{ padding: '1.5em' }}>
+      <h1>I am a React application</h1>
+      <h2>
+        <code>@ionic/react</code> has been added to my dependencies
+      </h2>
       <IonDatetime />
       <IonList>
         <IonItem>

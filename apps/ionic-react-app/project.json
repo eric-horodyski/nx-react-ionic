@@ -1,0 +1,174 @@
+{
+  "name": "ionic-react-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ionic-react-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ionic-react-app",
+        "index": "apps/ionic-react-app/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ionic-react-app/src/main.tsx",
+        "polyfills": "apps/ionic-react-app/src/polyfills.ts",
+        "tsConfig": "apps/ionic-react-app/tsconfig.app.json",
+        "assets": [
+          "apps/ionic-react-app/src/assets",
+          "apps/ionic-react-app/src/manifest.json"
+        ],
+        "styles": ["apps/ionic-react-app/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ionic-react-app/src/environments/environment.ts",
+              "with": "apps/ionic-react-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ionic-react-app:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ionic-react-app:build:development"
+        },
+        "production": {
+          "buildTarget": "ionic-react-app:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ionic-react-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ionic-react-app"],
+      "options": {
+        "jestConfig": "apps/ionic-react-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "cap": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "--help"
+      }
+    },
+    "add": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "add"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "add ios"
+        },
+        "android": {
+          "cmd": "add android"
+        }
+      }
+    },
+    "copy": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "copy"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "copy ios"
+        },
+        "android": {
+          "cmd": "copy android"
+        }
+      }
+    },
+    "open": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "open"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "open ios"
+        },
+        "android": {
+          "cmd": "open android"
+        }
+      }
+    },
+    "run": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "run"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "run ios"
+        },
+        "android": {
+          "cmd": "run android"
+        }
+      }
+    },
+    "sync": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "sync"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "sync ios"
+        },
+        "android": {
+          "cmd": "sync android"
+        }
+      }
+    },
+    "update": {
+      "executor": "@nxext/capacitor:cap",
+      "options": {
+        "cmd": "update"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "update ios"
+        },
+        "android": {
+          "cmd": "update android"
+        }
+      }
+    }
+  },
+  "tags": []
+}
